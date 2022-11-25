@@ -17,7 +17,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div
 			{...useBlockProps({
-				className: `has-${columns}`,
+				className: `has-${columns}-columns`,
 			})}
 		>
 			<InspectorControls>
