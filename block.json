@@ -3,7 +3,7 @@
 	"name": "blocks-course/team-members",
 	"title": "Team Members",
 	"category": "Media",
-	"icon": "Admin Users",
+	"icon": "admin-users",
 	"description": "A team grid.",
 	"keywords": [
 		"Team",
