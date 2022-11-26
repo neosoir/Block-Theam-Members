@@ -22,6 +22,22 @@ registerBlockType('blocks-course/team-member', {
 			source: 'html',
 			selector: 'p',
 		},
+		id: {
+			type: '',
+		},
+		alt: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attributes: 'alt',
+			default: '',
+		},
+		url: {
+			type: 'string',
+			source: 'attribute',
+			selector: 'img',
+			attribute: 'src',
+		},
 	},
 	icon: 'admin-users',
 	edit: Edit,

@@ -6,8 +6,13 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+/* Members Container */
 .wp-block-blocks-course-team-members {
   display: block;
+  /* stylelint-disable-next-line selector-class-pattern */
+}
+.wp-block-blocks-course-team-members.has-1-columns {
+  /* stylelint-disable-next-line selector-class-pattern */
 }
 .wp-block-blocks-course-team-members.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   width: calc(100% / 1 - 20px);
@@ -21,6 +26,9 @@
   justify-content: center;
   min-height: 70px;
 }
+.wp-block-blocks-course-team-members.has-2-columns {
+  /* stylelint-disable-next-line selector-class-pattern */
+}
 .wp-block-blocks-course-team-members.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   width: calc(100% / 2 - 20px);
 }
@@ -32,6 +40,9 @@
   align-items: center;
   justify-content: center;
   min-height: 70px;
+}
+.wp-block-blocks-course-team-members.has-3-columns {
+  /* stylelint-disable-next-line selector-class-pattern */
 }
 .wp-block-blocks-course-team-members.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   width: calc(100% / 3 - 20px);
@@ -45,6 +56,9 @@
   justify-content: center;
   min-height: 70px;
 }
+.wp-block-blocks-course-team-members.has-4-columns {
+  /* stylelint-disable-next-line selector-class-pattern */
+}
 .wp-block-blocks-course-team-members.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   width: calc(100% / 4 - 20px);
 }
@@ -57,6 +71,9 @@
   justify-content: center;
   min-height: 70px;
 }
+.wp-block-blocks-course-team-members.has-5-columns {
+  /* stylelint-disable-next-line selector-class-pattern */
+}
 .wp-block-blocks-course-team-members.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   width: calc(100% / 5 - 20px);
 }
@@ -68,6 +85,9 @@
   align-items: center;
   justify-content: center;
   min-height: 70px;
+}
+.wp-block-blocks-course-team-members.has-6-columns {
+  /* stylelint-disable-next-line selector-class-pattern */
 }
 .wp-block-blocks-course-team-members.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   width: calc(100% / 6 - 20px);
@@ -93,6 +113,20 @@
 }
 .wp-block-blocks-course-team-members > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] {
   margin: 10px;
+}
+.wp-block-blocks-course-team-members > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] .wp-block-blocks-course-team-member-img {
+  position: relative;
+}
+.wp-block-blocks-course-team-members > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] .wp-block-blocks-course-team-member-img.is-loading img {
+  opacity: 0.3;
+}
+.wp-block-blocks-course-team-members > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] .wp-block-blocks-course-team-member-img .components-spinner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 .wp-block-blocks-course-team-members > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="blocks-course/team-member"] h4 {
   color: #222;
