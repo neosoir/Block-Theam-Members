@@ -29,7 +29,7 @@ registerBlockType('blocks-course/team-member', {
 			type: 'string',
 			source: 'attribute',
 			selector: 'img',
-			attributes: 'alt',
+			attribute: 'alt',
 			default: '',
 		},
 		url: {

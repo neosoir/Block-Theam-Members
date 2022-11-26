@@ -310,7 +310,7 @@ __webpack_require__.r(__webpack_exports__);
       type: 'string',
       source: 'attribute',
       selector: 'img',
-      attributes: 'alt',
+      attribute: 'alt',
       default: ''
     },
     url: {
