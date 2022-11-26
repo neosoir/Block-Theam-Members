@@ -1,14 +1,16 @@
+import { useEffect, useState } from '@wordpress/element';
 import {
 	useBlockProps,
 	RichText,
 	MediaPlaceholder,
 } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
 import { Spinner, withNotices } from '@wordpress/components';
-import { isBlobURL } from '@wordpress/blob';
 
 function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
-	const { name, bio, url, alt } = attributes;
+	const { name, bio, url, alt, id } = attributes;
+	const [blobURL, setBlobURL] = useState();
 
 	const onChangeName = (newName) => {
 		setAttributes({ name: newName });
@@ -46,6 +48,24 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 		noticeOperations.removeAllNotices();
 		noticeOperations.createErrorNotice(messange);
 	};
+
+	useEffect(() => {
+		if (!id && isBlobURL(url)) {
+			setAttributes({
+				url: undefined,
+				alt: '',
+			});
+		}
+	}, [url]);
+
+	useEffect(() => {
+		if (isBlobURL(url)) {
+			setBlobURL(url);
+		} else {
+			revokeBlobURL(blobURL);
+			setBlobURL();
+		}
+	}, []);
 
 	return (
 		<div {...useBlockProps}>
