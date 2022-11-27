@@ -6,8 +6,10 @@ import {
 	BlockControls,
 	MediaReplaceFlow,
 	InspectorControls,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
 import { isBlobURL, revokeBlobURL } from '@wordpress/blob';
 import {
 	Spinner,
@@ -15,6 +17,7 @@ import {
 	ToolbarButton,
 	PanelBody,
 	TextareaControl,
+	SelectControl,
 } from '@wordpress/components';
 
 function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
@@ -27,10 +30,6 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 
 	const onChangeBio = (newBio) => {
 		setAttributes({ bio: newBio });
-	};
-
-	const onChangeAlt = (newAlt) => {
-		setAttributes({ alt: newAlt });
 	};
 
 	const onSelectImage = (image) => {
@@ -55,6 +54,43 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 			id: undefined,
 			alt: '',
 		});
+	};
+
+	const onChangeAlt = (newAlt) => {
+		setAttributes({ alt: newAlt });
+	};
+
+	const imageObject = useSelect(
+		(select) => {
+			const { getMedia } = select('core');
+			return id ? getMedia(id) : null;
+		},
+		[id]
+	);
+
+	const imageSizes = useSelect((select) => {
+		return select(blockEditorStore).getSettings().imageSizes;
+	}, []);
+
+	const getImageSizeOptions = () => {
+		if (!imageObject) return [];
+		const options = [];
+		const sizes = imageObject.media_details.sizes;
+		for (const key in sizes) {
+			const size = sizes[key];
+			const imageSize = imageSizes.find((s) => s.slug === key);
+			if (imageSize) {
+				options.push({
+					label: imageSize.name,
+					value: size.source_url,
+				});
+			}
+		}
+		return options;
+	};
+
+	const onChangeImageSize = (newURL) => {
+		setAttributes({ url: newURL });
 	};
 
 	const onUploadError = (messange) => {
@@ -92,6 +128,14 @@ function Edit({ attributes, setAttributes, noticeOperations, noticeUI }) {
 		<>
 			<InspectorControls>
 				<PanelBody title={__('Image Settings', 'team-members')}>
+					{id && (
+						<SelectControl
+							label={__('Image Size', 'team-members')}
+							options={getImageSizeOptions()}
+							value={url}
+							onChange={onChangeImageSize}
+						/>
+					)}
 					{url && !isBlobURL(url) && (
 						<TextareaControl
 							label={__('Alt Text', 'team-members')}
