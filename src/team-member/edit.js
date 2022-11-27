@@ -32,8 +32,10 @@ function Edit({
 }) {
 	const { name, bio, url, alt, id, socialLinks } = attributes;
 	const [blobURL, setBlobURL] = useState();
+	const [selectedLink, setSelectedLink] = useState();
 	const titleRef = useRef();
 	const prevURL = usePrevious(url);
+	const prevIsSelected = usePrevious(isSelected);
 
 	const onChangeName = (newName) => {
 		setAttributes({ name: newName });
@@ -139,7 +141,13 @@ function Edit({
 		if (url && !prevURL) {
 			titleRef.current.focus();
 		}
-	}, [url]);
+	}, [url, prevURL]);
+
+	useEffect(() => {
+		if (prevIsSelected && !isSelected) {
+			setSelectedLink();
+		}
+	}, [isSelected, prevIsSelected]);
 
 	return (
 		<>
@@ -224,8 +232,23 @@ function Edit({
 					<ul>
 						{socialLinks.map((item, index) => {
 							return (
-								<li key={index}>
-									<Icon icon={item.icon} />
+								<li
+									key={index}
+									className={
+										selectedLink === index
+											? 'is-selected'
+											: null
+									}
+								>
+									<button
+										arial-label={__(
+											'Edit Social Link',
+											'team-members'
+										)}
+										onClick={() => setSelectedLink(index)}
+									>
+										<Icon icon={item.icon} />
+									</button>
 								</li>
 							);
 						})}
