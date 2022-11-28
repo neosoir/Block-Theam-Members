@@ -5389,7 +5389,30 @@ __webpack_require__.r(__webpack_exports__);
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('blocks-course/team-members', {
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"],
+  transforms: {
+    from: [{
+      type: 'block',
+      blocks: ['core/gallery'],
+      transform: (images, columns) => {
+        const innerBlocks = images.map(_ref => {
+          let {
+            url,
+            id,
+            alt
+          } = _ref;
+          return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('blocks-course/team-member', {
+            alt,
+            id,
+            url
+          });
+        });
+        return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.createBlock)('blocks-course/team-members', {
+          columns: columns || 2
+        }, innerBlocks);
+      }
+    }]
+  }
 });
 
 /***/ }),
