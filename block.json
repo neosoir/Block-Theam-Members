@@ -26,5 +26,50 @@
 			"type": "number",
 			"default": 2
 		}
+	},
+	"example": {
+		"attributes": {
+			"columns": 2
+		},
+		"innerBlocks": [
+			{
+				"name": "blocks-course/team-member",
+				"attributes": {
+					"name": "John Doe",
+					"bio": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas eligendi iure reiciendis rem facere. Beatae repudiandae iste provident aliquid perspiciatis dolore eligendi dolores qui, sapiente aut necessitatibus ab dolorem illo!",
+					"url": "https://picsum.photos/id/1012/300/200",
+					"socialLinks": [
+						{
+							"icon": "facebook"
+						},
+						{
+							"icon": "twitter"
+						},
+						{
+							"icon": "instagram"
+						}
+					]
+				}
+			},
+			{
+				"name": "blocks-course/team-member",
+				"attributes": {
+					"name": "Jone Doe",
+					"bio": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas eligendi iure reiciendis rem facere. Beatae repudiandae iste provident aliquid perspiciatis dolore eligendi dolores qui, sapiente aut necessitatibus ab dolorem illo!",
+					"url": "https://picsum.photos/id/1011/300/200",
+					"socialLinks": [
+						{
+							"icon": "facebook"
+						},
+						{
+							"icon": "twitter"
+						},
+						{
+							"icon": "instagram"
+						}
+					]
+				}
+			}
+		]
 	}
 }
